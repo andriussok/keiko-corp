@@ -1,40 +1,19 @@
 $(document).ready(function(){
 
 	//Navigation menu scrollTo
-	$('header nav ul li a').click(function(event){
+	$('header nav ul li a, .app_link').on('click',function(event){
 		event.preventDefault();
-		var section = $(this).attr('href');
-		var section_pos = $(section).position();
-
-		if(section_pos){
-			$(window).scrollTo({top:section_pos.top, left:'0px'}, 1000);
-		}
+		$('html, body').animate({
+			scrollTop: $($.attr(this, 'href')).offset().top
+		}, 500);
 		
 	});
-
-	$('.app_link').click(function(e){
-		event.preventDefault();
-		$(window).scrollTo({top:$("#hero").position().top, left:'0px'}, 1000);		
-	});
-
-
-
-
-
-
-
 
 	//Show & Hide menu on mobile
 	$('.burger_icon').click(function(){
 		$('header nav').toggleClass('show');
 		$('header .burger_icon').toggleClass('active');
 	});
-
-	
-
-
-
-
 
 
 	//wow.js on scroll animations initialization
@@ -48,39 +27,8 @@ $(document).ready(function(){
 	wow.init();
 
 
-
-
-
-
-
-
 	//parallax effect initialization
 	$('.hero').parallax("50%", 0.3);
-
-
-
-
-
-
-
-
-	//Nice scroll initialization
-	$("html").niceScroll({
-		scrollspeed: 50,
-		autohidemode : false,
-		cursorwidth : 8,
-		cursorborderradius: 8,
-		cursorborder : "0",
-		background : "rgba(48, 48, 48, .4)",
-		cursorcolor : '#1f1f1f',
-		zindex : 999
-	});
-
-
-
-
-
-
 
 
 	//Testimonials slider initialization
@@ -95,11 +43,6 @@ $(document).ready(function(){
 		autoPlay : true,
 		transitionStyle : "fade"
 	});
-
-
-
-
-
 
 
 	//Mailchimp subscription form initialization
@@ -136,12 +79,6 @@ $(document).ready(function(){
 	}
 
 
-
-
-
-
-
-
 	//Popup video
 	$('#play_video').click(function(e){
 		e.preventDefault();	
@@ -154,14 +91,19 @@ $(document).ready(function(){
 
 	$('.close_video').click(function(e){
 		e.preventDefault();	
+		closeVideo();
+	});
 
+	$(document).on('keyup', function(e){
+		if (e.keyCode === 27) {
+			closeVideo();
+		}
+	});
+
+	const closeVideo = () => {
 		$('.about_video').fadeOut(200,function(){
 			$('iframe', this).remove();
 		});
-
-	});
-
-
-
+	};
 
 });

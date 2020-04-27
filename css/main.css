@@ -64,14 +64,6 @@ a:focus{
 }
 
 
-
-
-
-
-
-
-
-
 /*		Header 		*/
 
 header{
@@ -585,7 +577,7 @@ a.app_link{
 	font-size: 14px;
 }
 
-.#tslider{
+#tslider{
 	text-align: center!important;
 	position: relative!important;
 }
