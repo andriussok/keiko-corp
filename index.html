@@ -283,7 +283,10 @@
 
 		window.onload = function() {
 			loadStylesheet('css/bootstrap.css');
-			document.getElementById('preloader').classList.add("animated", "fadeOut");
+			document.getElementById('preloader').classList.add("animated", "fadeOut")
+			setTimeout(() => {
+				document.getElementById('preloader').style.display = "none";
+			}, 1000);
 		}
 	</script>
 
